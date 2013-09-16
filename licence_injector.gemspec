@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 	s.homepage		= "http://www.penrillian.com"
 	s.summary		= %q{Injects licence text into source files}
 	s.description	= %q{licence_injector injects text from the given licence file into each source file found at the given source path whose extension is one of those in the given list of extensions. licence_injector also allows a previously injected licence to be replaced with a new licence}
-	s.files			= ["lib/LicenceInjector.rb"]
+	s.files			= ["lib/LicenceInjector.rb", "lib/licence_injector_version.rb"]
 	s.executables	= ["licence_injector"]
 	s.license		= "BSD Clause 2"
 	
