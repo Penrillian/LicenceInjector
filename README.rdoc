@@ -34,5 +34,5 @@ For more help:
 Get the development dependencies
 
 	bundle install
-	
+
 Most of the code is in 'lib/LicenceInjector.rb' and 'bin/licence_injector'
