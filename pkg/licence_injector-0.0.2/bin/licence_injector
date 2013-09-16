@@ -1,0 +1,86 @@
+#! /usr/bin/env ruby
+
+require 'optparse'
+require_relative '../lib/LicenceInjector.rb'
+
+commands = [:inject, :replace]
+options = {:list=>false, :old_licence=>"", :overwrite=>false}
+
+option_parser = OptionParser.new do |opts|
+	executable_name = File.basename($PROGRAM_NAME)
+	opts.banner = "\tInject licence into src files, or replace current licence with new licence. Requires <command> - either 'inject' or 'replace'
+	
+	Usage: #{executable_name} <command> [options]"
+	
+	opts.on("--list", "output changed files as a list") do
+		options[:list] = true
+	end
+	
+	opts.on("-o OLDLICENCE", "--old_licence OLDLICENCE", "the path to the file containing the old licence - used only with the replace command") do |old_licence|
+		options[:old_licence] = old_licence
+	end
+	
+	opts.on("-l LICENCE", "--licence LICENCE", "the path to the file containing the licence") do |licence|
+		options[:licence] = licence
+	end
+	
+	opts.on("-s SRCPATH", "--src_path SRCPATH", "path to the folder containing the src files to be processed. SRCPATH will be searched and all of its sub-folders") do |src_path|
+		options[:src_path] = src_path.gsub("\\", "/")
+	end
+
+	opts.on("-e EXTENSIONS", "--extensions EXTENSIONS", Array, "the list of file extensions to be searched for, comma separated. E.g. cpp,h,java") do |extensions|
+		options[:extensions] = extensions
+	end
+
+	opts.on("--overwrite", "makes the changes to the source files as opposed to the default of just reporting the number of src file discovered") do
+		options[:overwrite] = true
+	end	
+end
+
+option_parser.parse!
+
+def file_doesnt_exist file
+	!File.exist? file
+end
+
+if ARGV.empty?
+	puts "\tError: you must supply a command, path to licence file, path to src and some extensions"
+	puts
+	puts option_parser.help
+	STDERR.puts "ERROR: There are missing arguments"
+	exit 1
+end
+
+commands = [:inject, :replace]
+command = ARGV.shift.to_sym
+
+if options[:licence].nil? || options[:src_path].nil? || options[:extensions].nil?
+	STDERR.puts "ERROR: There are missing arguments"
+	raise OptionParser::MissingArgument
+end
+
+if file_doesnt_exist(options[:licence])
+	STDERR.puts "ERROR: The licence file #{options[:licence]} doesn't exist"
+	raise OptionParser::InvalidArgument 
+end
+
+unless commands.include? command
+	STDERR.puts "ERROR: There are missing arguments"
+	raise OptionParser::MissingArgument
+end
+
+if command == :replace
+	if options[:old_licence].empty?
+		STDERR.puts "ERROR: Need an old licence when using 'replace'"
+		raise OptionParser::MissingArgument 
+	end
+	if file_doesnt_exist(options[:old_licence])
+		STDERR.puts "ERROR: The old licence file #{options[:old_licence]} doesn't exist"
+		raise OptionParser::InvalidArgument 
+	end
+end
+
+#puts options.inspect
+
+licence_injector = LicenceInjector.new command, options[:licence], options[:src_path], options[:extensions], options[:old_licence], options[:list], options[:overwrite]
+licence_injector.inject_licence

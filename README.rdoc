@@ -1,0 +1,38 @@
+= 'licence_injector' - Injects licence text into source file
+
+Author:: Barry Drinkwater (mailto:barry@penrillian.com)
+Copyright:: Copyright (c) 2013 Penrillian
+Licence:: Distributed under the BSD Clause 2 licence, see LICENCE.txt
+
+This application injects text from the given licence file into each source file found in the given source path whose extension is one of those in the given list of extensions. It handles xml files and files containing a shebang; both of these type of files require that their first lines remain unaltered. Also, a previously injected licence can be replaced with a new licence.
+
+== Install
+
+Install:
+
+	gem install licence_injector
+	
+== Use
+
+Inject licence:
+
+licence_injector inject [options]
+
+Replace licence:
+
+licence_injector replace [options]
+
+For more help:
+
+	licence_injector --help
+	gem man licence_injector
+	
+== Developing for 'licence_injector'
+
+	gem install bundler
+
+Get the development dependencies
+
+	bundle install
+	
+Most of the code is in 'lib/LicenceInjector.rb' and 'bin/licence_injector'

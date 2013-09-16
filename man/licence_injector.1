@@ -1,0 +1,82 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "LICENCE_INJECTOR" "1" "September 2013" "" ""
+.
+.SH "NAME"
+\fBlicence_injector\fR \- inject or replace licences within src files
+.
+.SH "SYNOPSIS"
+\'licence_injector\' \fIcommand\fR \'\-i\' | \'\-\-licence licence_file\' [\'\-o\' | \'\-\-old_licence old_licence_file\'] \'\-s\' | \'\-\-src_path src_path\' \'\-e\' | \'\-\-extensions file_extensions\' [\'\-v\' | \'\-\-list output_as_list\']
+.
+.SH "DESCRIPTION"
+\fBlicence_injector\fR injects text from the given licence file into each source file found in the given source path whose extension is one of those in the given list of extensions\. It handles xml files and files containing a shebang; both of these type of files require that their first lines remain unaltered\. \fBlicence_injector\fR also allows a previously injected licence to be replaced with a new licence\.
+.
+.SH "COMMANDS"
+.
+.TP
+\'inject\'
+Inject licence text into files
+.
+.TP
+\'replace\'
+Replce licence text with new licence text
+.
+.SH "OPTIONS"
+.
+.TP
+\'\-i\', \'\-\-licence\'
+The path to the file containing the licence
+.
+.TP
+\'\-o\', \'\-\-old_licence\'
+The optional path to the file contining the licence to be replaced\. Used with the \fBreplace\fR command
+.
+.TP
+\'\-s\', \'\-\-src_path src_path\'
+The path to the directory containing the source files to be processed\. Files in sub\-folders will also be processed
+.
+.TP
+\'\-e\', \'\-\-extensions\'
+The list of extensions the source files to be processed have\. For multiple extensions This must be a comma separated list
+.
+.TP
+\'\-\-list\'
+Switches on list output
+.
+.TP
+\'\-\-overwrite\'
+Makes changes to the files \- default is to report the number of discovered src files
+.
+.TP
+\'\-v\', \'\-\-version\'
+Prints the version number\. All other options will be ignored
+.
+.SH "EXAMPLES"
+Inject the contents of licence_2013\.txt into cpp, hpp, h and c files located at C:\eprojects\emy_project:
+.
+.P
+\fBC:\e>licence_injector inject \-l C:\elicences\elicence_2013\.txt \-s C:\eprojects\emy_project \-e cpp,hpp,h,c\fR \-\-overwrite
+.
+.P
+Replace the contents of old_licence\.txt with new_licence\.txt in cpp, hpp, h and c files located at C:\eprojects\emy_project:
+.
+.P
+\fBC:\e>licence_injector replace \-l C:\elicences\enew_licence\.txt \-o C:\elicences\eold_licence\.txt \-s C:\eprojects\emy_project \-e cpp,hpp,h,c\fR \-\-overwrite
+.
+.SH "LICENCE"
+BSD 2\-Clause
+.
+.SH "AUTHOR"
+Barry Drinkwater
+.
+.br
+email: \fIbarry@penrillian\.com\fR
+.
+.br
+web: www\.penrillian\.com \fIhttp://www\.penrillian\.com\fR
+.
+.br
+.
+.SH "SEE ALSO"
+TBD \- link to github

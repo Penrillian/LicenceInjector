@@ -1,0 +1,52 @@
+licence_injector(1) -- inject or replace licences within src files
+==================================================================
+
+##SYNOPSIS
+
+'licence_injector' <command> '-i' | '--licence licence_file' ['-o' | '--old_licence old_licence_file'] '-s' | '--src_path src_path' '-e' | '--extensions file_extensions' ['-v' | '--list output_as_list']
+
+##DESCRIPTION
+
+**licence_injector** injects text from the given licence file into each source file found in the given source path whose extension is one of those in the given list of extensions. It handles xml files and files containing a shebang; both of these type of files require that their first lines remain unaltered. **licence_injector** also allows a previously injected licence to be replaced with a new licence.
+
+##COMMANDS
+* 'inject':
+	Inject licence text into files
+* 'replace':
+	Replce licence text with new licence text
+
+##OPTIONS
+* '-i', '--licence':
+	The path to the file containing the licence
+* '-o', '--old_licence':
+	The optional path to the file contining the licence to be replaced. Used with the **replace** command
+* '-s', '--src_path src_path':
+	The path to the directory containing the source files to be processed. Files in sub-folders will also be processed
+* '-e',  '--extensions':
+	The list of extensions the source files to be processed have. For multiple extensions This must be a comma separated list
+* '--list':
+	Switches on list output
+* '--overwrite':
+	Makes changes to the files - default is to report the number of discovered src files
+* '-v', '--version':
+	Prints the version number. All other options will be ignored
+	
+##EXAMPLES
+Inject the contents of licence_2013.txt into cpp, hpp, h and c files located at C:\projects\my_project:
+
+`C:\>licence_injector inject -l C:\licences\licence_2013.txt -s C:\projects\my_project -e cpp,hpp,h,c` --overwrite
+	
+Replace the contents of old_licence.txt with new_licence.txt in cpp, hpp, h and c files located at C:\projects\my_project:
+
+`C:\>licence_injector replace -l C:\licences\new_licence.txt -o C:\licences\old_licence.txt -s C:\projects\my_project -e cpp,hpp,h,c` --overwrite
+
+##LICENCE
+BSD 2-Clause
+
+##AUTHOR
+Barry Drinkwater<br>
+email: [barry@penrillian.com](mailto:barry@penrillian.com)<br>
+web: [www.penrillian.com](http://www.penrillian.com)<br>
+
+##SEE ALSO
+TBD - link to github
