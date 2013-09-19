@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    licence_injector (0.0.2)
+    licence_injector (0.0.4)
 
 GEM
   remote: https://rubygems.org/
