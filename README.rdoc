@@ -25,6 +25,7 @@ licence_injector replace [options]
 For more help:
 
 	licence_injector --help
+	
 	gem man licence_injector
 	
 == Developing for 'licence_injector'
