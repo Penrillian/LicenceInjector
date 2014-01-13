@@ -1,17 +1,28 @@
 require_relative '..\lib\LicenceInjector.rb'
 
+$Test_src_dir = "./temp_test_files/"
 	
 def create_fake_licence_file licence_file_name, licence_text = []
-	licence_file = File.open licence_file_name, "w"  do | file |
+	unless Dir.exists? $Test_src_dir 
+	#	puts "making directory: #{src_path}"
+		Dir.mkdir $Test_src_dir
+	end
+	File.open $Test_src_dir + licence_file_name, "w"  do | file |
 		file.write licence_text
 	end
 end
 	
 def remove_fake_licence_file licence_file_name
-	FileUtils.remove_file licence_file_name
+	FileUtils.remove_file $Test_src_dir + licence_file_name
 end
 
-def create_fake_source_files no_of_files, src_text, extension, src_path = "."
+def remove_test_src_dir
+	if Dir.exists? $Test_src_dir
+		Dir.rmdir $Test_src_dir
+	end
+end
+
+def create_fake_source_files no_of_files, src_text, extension, src_path = $Test_src_dir
 	unless Dir.exists? src_path 
 	#	puts "making directory: #{src_path}"
 		Dir.mkdir src_path
@@ -29,7 +40,7 @@ def create_fake_source_files no_of_files, src_text, extension, src_path = "."
 	#puts
 end
 
-def remove_fake_source_files no_of_files, extension, src_path = "."
+def remove_fake_source_files no_of_files, extension, src_path = $Test_src_dir
 	#puts
 	#print "Deleting files"
 	no_of_files.times do | i |
