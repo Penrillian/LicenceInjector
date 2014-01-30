@@ -54,26 +54,29 @@ attr_reader :changed_files_count
 	def replace_old_licence file
 		src = read_file file
 		
-		src = src.sub(read_file(@old_licence_file_path), read_file(@licence_file_path))
-			
-		if @overwrite
-			begin
-				output = File.new(file, "w")
-				output.write src
-				output.close
-			rescue
-				puts
-				STDERR.puts "ERROR: There was a problem writing to '#{file}"
-				exit 1
+		src_after_replacing_licence = src.sub(read_file(@old_licence_file_path), read_file(@licence_file_path))
+
+		unless src_after_replacing_licence === src
+			if @overwrite
+				begin
+					output = File.new(file, "w")
+					output.write src_after_replacing_licence
+					output.close
+				rescue
+					puts
+					STDERR.puts "ERROR: There was a problem writing to '#{file}"
+					exit 1
+				end
 			end
+			
+			if @list
+				puts File.absolute_path(file)
+			else
+				print "."
+			end
+			@changed_files_count += 1
 		end
-		
-		if @list
-			puts File.absolute_path(file)
-		else
-			print "."
-		end
-		@changed_files_count += 1
+		@changed_files_count
 	end
 	
 	def inject_licence_into_file file
