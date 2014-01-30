@@ -1,3 +1,6 @@
+v0.0.6
+- app now replaces *all* occurrences of the given licence text in a file, not just the first occurrence. This extends the usefulness of the app - e.g. namespaces in java, which may occur many times in a single file, can now be replaced
+
 v0.0.5
 - fixed bug where changed file count was incremented when no changes were made to the file (https://github.com/Penrillian/LicenceInjector/issues/1)
 

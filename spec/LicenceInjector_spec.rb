@@ -337,4 +337,38 @@ describe LicenceInjector do
 			get_file_content($Test_src_dir + "0.cpp").should eql (@src_text.join)
 		end
 	end
+		
+	describe "#all occurrences of text is changed, not just the first occurrence" do
+		after :all do
+			remove_test_src_dir
+		end
+		
+		before :each do
+			@old_licence_file = "./old_licence.txt"
+			@old_licence_text = "/* Copyright Penrillian 2012\nNo rights reserved */\n"
+			create_fake_licence_file(@licence_file, @licence_text)
+			create_fake_licence_file(@old_licence_file, @old_licence_text)
+			create_fake_source_files(1, @src_text, ".cpp")
+		end
+		
+		after :each do
+			remove_fake_licence_file @licence_file
+			remove_fake_licence_file @old_licence_file
+			remove_fake_source_files(1, ".cpp")
+		end
+		
+		it "does not increment changed files count when old licence does not exist in source file" do
+		
+			licence_injector = LicenceInjector.new :inject, $Test_src_dir + @old_licence_file, ".", ["cpp"], "some old licence path", true
+			licence_injector.inject_licence_into_file($Test_src_dir + "0.cpp").should eql 1
+			licence_injector.inject_licence_into_file($Test_src_dir + "0.cpp").should eql 2
+			get_file_content($Test_src_dir + "0.cpp").should eql (@old_licence_text + @old_licence_text + @src_text.join)
+			
+			new_licence_injector = LicenceInjector.new :replace,$Test_src_dir + @licence_file, ".", ["cpp"], $Test_src_dir + @old_licence_file, true
+			new_licence_injector.changed_files_count.should eql 0
+			new_licence_injector.replace_old_licence($Test_src_dir + "0.cpp").should eql 1
+			new_licence_injector.changed_files_count.should eql 1
+			get_file_content($Test_src_dir + "0.cpp").should eql (@licence_text + @licence_text + @src_text.join)
+		end
+	end
 end
