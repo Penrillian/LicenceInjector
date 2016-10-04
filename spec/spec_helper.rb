@@ -1,4 +1,4 @@
-require_relative '..\lib\LicenceInjector.rb'
+require_relative '../lib/LicenceInjector.rb'
 
 $Test_src_dir = "./temp_test_files/"
 	
