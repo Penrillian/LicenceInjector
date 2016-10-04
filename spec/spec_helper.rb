@@ -1,4 +1,9 @@
 require_relative '../lib/LicenceInjector.rb'
+require 'simplecov'
+SimpleCov.start
+
+require 'codecov'
+SimpleCov.formatter = SimpleCov::Formatter::Codecov
 
 $Test_src_dir = "./temp_test_files/"
 	
