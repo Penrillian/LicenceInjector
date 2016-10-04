@@ -1,6 +1,7 @@
 https://img.shields.io/gem/v/licence_injector.png
 https://img.shields.io/gem/dt/licence_injector.png
 https://img.shields.io/gem/dtv/licence_injector.png
+{<img src="https://codeclimate.com/github/Penrillian/LicenceInjector/badges/gpa.svg" />}[https://codeclimate.com/github/Penrillian/LicenceInjector]
 
 = 'licence_injector' - Injects licence text into source file
 
