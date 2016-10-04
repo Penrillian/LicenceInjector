@@ -1,4 +1,5 @@
 https://img.shields.io/gem/v/licence_injector.png
+https://img.shields.io/gem/dt/licence_injector.png
 
 = 'licence_injector' - Injects licence text into source file
 
