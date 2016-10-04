@@ -145,7 +145,7 @@ describe LicenceInjector do
 				create_fake_licence_file(@licence_file, @licence_text)
 				create_fake_source_files(number_of_src_files, @src_text, ".cpp")
 				
-				licence_injector = LicenceInjector.new :inject,$Test_src_dir + @licence_file, ".", ["cpp"], "some old licence path", true
+				licence_injector = LicenceInjector.new :inject,$Test_src_dir + @licence_file, $Test_src_dir, ["cpp"], "some old licence path", true
 				licence_injector.inject_licence
 				licence_injector.changed_files_count.should eql number_of_src_files
 				number_of_src_files.times do | x |
@@ -167,7 +167,7 @@ describe LicenceInjector do
 				create_fake_source_files(number_of_hpp_files, @src_text, ".hpp")
 				create_fake_source_files(number_of_java_files, @src_text, ".java")
 				
-				licence_injector = LicenceInjector.new :inject,$Test_src_dir + @licence_file, ".", ["cpp", "hpp", "java"], "some old licence path", true
+				licence_injector = LicenceInjector.new :inject,$Test_src_dir + @licence_file, $Test_src_dir, ["cpp", "hpp", "java"], "some old licence path", true
 				licence_injector.inject_licence
 				licence_injector.changed_files_count.should eql number_of_cpp_files + number_of_hpp_files + number_of_java_files
 				number_of_cpp_files.times do | x |
