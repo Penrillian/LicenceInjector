@@ -1,6 +1,6 @@
-require_relative '../lib/LicenceInjector.rb'
 require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
+require_relative '../lib/LicenceInjector.rb'
 
 $Test_src_dir = "./temp_test_files/"
 	
