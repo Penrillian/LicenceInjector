@@ -1,10 +1,4 @@
 require_relative '../lib/LicenceInjector.rb'
-require 'simplecov'
-SimpleCov.start
-
-require 'codecov'
-SimpleCov.formatter = SimpleCov::Formatter::Codecov
-
 require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
 
