@@ -18,7 +18,8 @@ end
 
 def remove_test_src_dir
 	if Dir.exists? $Test_src_dir
-		Dir.rmdir $Test_src_dir
+		# Dir.rmdir $Test_src_dir
+		FileUtils.rm_r $Test_src_dir
 	end
 end
 
