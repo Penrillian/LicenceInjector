@@ -303,8 +303,9 @@ describe LicenceInjector do
 				remove_fake_source_files(1, ".cpp")
 			end
 			
-			it "does not change file if --overwrite flag is not passed" do
-				licence_injector = LicenceInjector.new :inject, $Test_src_dir + @licence_file, ".", ["cpp"], "some old licence path", true, false
+			it "does not change file if --overwrite flag is not passed", :focus => true do
+				licence_injector = LicenceInjector.new :inject, $Test_src_dir + @licence_file, $Test_src_dir, ["cpp"], "some old licence path", true, false
+				licence_injector.inject_licence
 				get_file_content($Test_src_dir + "0.cpp").should eql @src_text.join
 			end
 		end
