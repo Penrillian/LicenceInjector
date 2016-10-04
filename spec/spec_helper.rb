@@ -5,6 +5,9 @@ SimpleCov.start
 require 'codecov'
 SimpleCov.formatter = SimpleCov::Formatter::Codecov
 
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 $Test_src_dir = "./temp_test_files/"
 	
 def create_fake_licence_file licence_file_name, licence_text = []
