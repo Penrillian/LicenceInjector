@@ -1,5 +1,5 @@
 require "codeclimate-test-reporter"
-SimpleCov
+SimpleCov.start
 require_relative '../lib/LicenceInjector.rb'
 
 $Test_src_dir = "./temp_test_files/"
