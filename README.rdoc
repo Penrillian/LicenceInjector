@@ -1,8 +1,8 @@
-https://img.shields.io/gem/v/licence_injector.png {<img src="https://codeclimate.com/github/Penrillian/LicenceInjector/badges/gpa.svg" />}[https://codeclimate.com/github/Penrillian/LicenceInjector] {<img src="https://travis-ci.org/Penrillian/LicenceInjector.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/Penrillian/LicenceInjector] {<img src="https://codeclimate.com/github/Penrillian/LicenceInjector/badges/coverage.svg" />}[https://codeclimate.com/github/Penrillian/LicenceInjector/coverage] https://img.shields.io/gem/dt/licence_injector.png https://img.shields.io/gem/dtv/licence_injector.png
+https://img.shields.io/gem/v/licence_injector.png {<img src="https://codeclimate.com/github/bellabling/LicenceInjector/badges/gpa.svg" />}[https://codeclimate.com/github/bellabling/LicenceInjector] {<img src="https://travis-ci.org/bellabling/LicenceInjector.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/bellabling/LicenceInjector] {<img src="https://codeclimate.com/github/bellabling/LicenceInjector/badges/coverage.svg" />}[https://codeclimate.com/github/bellabling/LicenceInjector/coverage] https://img.shields.io/gem/dt/licence_injector.png https://img.shields.io/gem/dtv/licence_injector.png
 
 = 'licence_injector' - Injects licence text into source file
 
-Author:: Barry Drinkwater (mailto:barry@penrillian.com)
+Author:: Barry Drinkwater (mailto:barry.drinkwater@gmail.com)
 Copyright:: Copyright (c) 2013 Penrillian
 Licence:: Distributed under the BSD Clause 2 licence, see LICENCE.txt
 
