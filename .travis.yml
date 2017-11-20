@@ -1,3 +1,14 @@
 language: ruby
 # uncomment and edit the following line if your project needs to run something other than `rake`:
+env:
+  global:
+    - CC_TEST_REPORTER_ID=c3d0cc404c6c38f59ba187f7d35b40fac47f107fa8ca42b40a833017726e2457
+rvm:
+  - 2.2.0
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 script: bundle exec rspec spec
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
