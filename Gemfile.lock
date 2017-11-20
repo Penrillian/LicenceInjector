@@ -29,7 +29,9 @@ GEM
     simplecov-html (0.10.0)
 
 PLATFORMS
+  ruby
   x86-mingw32
+  x86_64-linux
 
 DEPENDENCIES
   codeclimate-test-reporter
@@ -39,4 +41,4 @@ DEPENDENCIES
   rspec (~> 2.14.1)
 
 BUNDLED WITH
-   1.12.5
+   1.16.0
